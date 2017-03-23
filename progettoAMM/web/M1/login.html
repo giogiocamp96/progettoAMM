@@ -1,16 +1,42 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>NerdBook: login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Giorgia Campanile">
+        <meta name="keywords" content="login NerdBook">
     </head>
     <body>
-        <div>TODO write content</div>
+        <header>
+            <div id="title">
+                <h1>Login</h1>
+            </div>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="descrizione.html">Descrizione</a></li>
+                <li><a href="bacheca.html">Bacheca</a></li>
+                <li><a href="profilo.html">Profilo</a></li>
+            </ul>
+        </nav>
+        
+        <div id="divBody">
+            <form action="servlet.java" method="post">
+                <div id="nome">
+                    <label for="usName">Username</label>
+                    <input type="text" name="username" id="usName" value="username"/>
+                </div>
+                <div id="pass">
+                    <label for="pswd">Password</label>
+                    <input type="password" name="pswd" id="pswd" value="oscurato" />
+                </div>
+                <div id="accedi">
+                    <button type="submit">Accedi</button>
+                </div>
+            </form>
+        </div>
     </body>
 </html>

@@ -1,16 +1,57 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Giorgia Campanile">
+        <meta name="keywords" content="profilo NerdBook">
     </head>
     <body>
-        <div>TODO write content</div>
+        <header>
+            <div id="title">
+                <h1>Profilo</h1>
+            </div>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="descrizione.html">Descrizione</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="bacheca.html">Bacheca</a></li>
+            </ul>
+        </nav>
+        <div id="divBody">
+            <form method="post" id='loginForm'>
+                <div id="nome">
+                    <label for="nomeUtente">Nome</label>
+                    <input type="text" name="nome" id="nomeUtente" value="Inserisci nome"/>
+                </div>
+                <div id="cognome">
+                    <label for="cognomeUtente">Cognome</label>
+                    <input type="text" name="cognome" id="cognomeUtente" value="Inserisci cognome" />
+                </div>
+                <div id="picProfilo">
+                    <label for="imgProfilo">URL immagine del profilo:</label>
+                    <input type="url" name="foto" id="imgProfilo" />
+                </div>
+                <div id="frase">
+                    <label for="frasePresentazione">Inserisci una frase di presentazione</label>
+                    <textarea rows="5" cols="25" name="frase" id="frasePresentazione"> </textarea>
+                </div>
+                <div id="dataNascita">
+                    <label for="dataDiNascita">Data di nascita</label>
+                    <input type="date" name="dataNascita" id="dataDiNascita" />
+                </div>
+                <div id="pass">
+                    <label for="pswd">Password</label>
+                    <input type="password" name="pswd" id="pswd" value="oscurato" />
+                </div>
+                <div id="confPass">
+                    <label for="cPswd">Conferma password</label>
+                    <input type="password" name="pswdC" id="cPswd" value="oscurato" />
+                </div>
+            </form>
+        </div>
     </body>
 </html>

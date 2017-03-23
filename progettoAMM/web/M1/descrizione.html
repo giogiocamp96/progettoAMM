@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
     <head>
         <title>About NerdBook</title>
@@ -8,41 +9,62 @@
         <meta name="keywords" content="NerdBook descrizione dettagli">
     </head>
     <body>
-        <div id="header">
+        <header>
             <div id="title">
                 <h1>About NerdBook</h1>
             </div>
-            <div id="navBar">
-                <ol>
-                    <li>Storia</li>
-                    <li>Chi siamo</li>
-                    <li>Gratuito</li>
-                    <li>Come iscriversi</li>
-                </ol>
-            </div>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="login.html">Effettua il login</a></li>
+            </ul>
+        </nav>
+        <div id="navBarInterna">
+            <ol>
+                <li><a href="#divHistory">Storia</a>
+                    <ul>
+                        <li><a href="#nasc">Nascita</a></li>
+                        <li><a href="#esor">Esordio</a></li>
+                    </ul>
+                </li>
+                <li><a href="#chisiamo">Chi siamo</a>
+                    <ul>
+                        <li><a href="#pers">Personale</a></li>
+                        <li><a href="#prev">Previsioni team</a></li>
+                    </ul>
+                </li>
+                <li><a href="#Gratuito">Gratuito</a></li>
+                <li><a href="#Iscriversi">Come iscriversi</a>
+                    <ul>
+                        <li><a href="#istr">Istruzioni</a></li>
+                        <li><a href="#note">Note legali</a></li>
+                    </ul>
+                </li>
+            </ol>
         </div>
+    
         <div id="divBody">
             <div id="divHistory">
                 <h2>Storia</h2>
-                <h3>Nascita</h3>
+                <h3 id="nasc">Nascita</h3>
                 <p> NerdBook nasce il primo gennaio 2016 in seguito alla sperimentazione di alcuni studenti Cagliaritani. 
                     Inizialmente è stato creato quasi per gioco, per la semplice curiosità di creare pagine HTML e coinvolgere
                     le persone vicine. Pian piano si diffuse a macchia d'olio tra studenti, parenti, amici vicini e lontani.
                 </p>
-                <h3>Esordio</h3>
+                <h3 id="esor">Esordio</h3>
                 <p> Il boom di utilizzi si ebbe appena tre mesi dopo, quando gli studenti scoprirono che il loro social era arrivato 
                     fino all'Inghilterra, e contava allora circa 30.000 iscritti.
                 </p>
             </div>
             <div id="chiSiamo">
                 <h2>Chi siamo</h2>
-                <h3>Personale</h3>
+                <h3 id ="pers">Personale</h3>
                 <p>
                     Il team di NerdBook è attualmente composto dai creatori Giorgia Campanile e Djanni Ilgatto, entrambi studenti del corso 
                     di Laurea in Informatica a Cagliari, e da alcuni studenti che si occupano di gestire la traduzione delle pagine in altre
                     lingue e di controllare l'aspetto legale del sito.
                 </p>
-                <h3>Previsioni team</h3>
+                <h3 id="prev">Previsioni team</h3>
                 <p>
                     Il team, come il Social, è in continua crescita, e si prevede di raggiungere un vasto personale entro la fine del 2017.
                     Alcuni studenti sono già stati selezionati con successo!
@@ -57,12 +79,12 @@
             </div>
             <div id="Iscriversi">
                 <h2>Come iscriversi</h2>
-                <h3>Istruzioni</h3>
+                <h3 id="istr">Istruzioni</h3>
                 <p>
                     Iscriversi è davvero semplice: inserisci nella pagina blabla i tuoi dati personali, la tua e-mail,
                     scegli una password e... fatto! Buon divertimento!
                 </p>
-                <h3>Note legali</h3>
+                <h3 id="note">Note legali</h3>
                 <p>
                     Per iscriversi è necessario aver compiuto i 14 anni di età.
                 </p>
