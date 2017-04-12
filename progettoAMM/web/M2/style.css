@@ -1,0 +1,662 @@
+/* 
+    Created on : 28-mar-2017, 12.25.21
+    Author     : Giorgia Campanile 
+*/
+
+
+html, body, #page{
+    height: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #fdeef4;
+    font: 15px/25px "Inconsolata", monospace;
+}
+
+h1{
+    margin-top: 0px; 
+    margin-left: 10px;
+    color: #800080;
+    font: 36px/35px "Inconsolata", monospace;
+    font-weight: bold;
+}
+
+h2{
+    margin-top: 10px; 
+    color: #800080;
+    font: 32px/30px TimesNewRoman, "Inconsolata", monospace;
+    font-weight: bold;
+}
+
+h3{
+    margin-top: 0px; 
+    color: #800080;
+    font: 28px/27px TimesNewRoman,"Inconsolata", monospace;
+    font-weight: bold;
+}
+
+a:link{
+    font-size: 20px;
+    text-decoration: none;
+    color: #8b008b;
+}
+
+a:visited{
+    font-size: 20px;
+    text-decoration: none;
+    color: #cc0099;
+}
+
+a:hover{
+    font-weight: bold;
+}
+
+input{
+    max-height: 200px;
+    max-width: 600px;
+    border: 1.5px solid #cc44aa;
+    background-color: white;
+    margin-bottom: 4px;
+}
+
+textarea{
+    border: 1.5px solid #cc44aa;
+}
+
+input:focus, textArea:focus{
+    border: 3px solid #bb0044;
+    box-shadow: 10px, 10px, 15px, #ff00ff;
+}
+
+nav ol, nav li, nav a, nav ul{
+    list-style-type:none;
+    display: inline-block;
+    padding-left: 30px;
+    font: 18px/10px TimesNewRoman, "Inconsolata", monospace;
+}
+
+nav li.active{
+    text-decoration: underline;
+}
+
+.navLeft{
+    float: left;
+    display: inline;
+}
+
+.navRight{
+    float:right;
+    display: inline;
+    margin-right: 5px;
+}
+
+header{
+    top: 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 10px;
+    position: fixed;
+    width: 99.9%;
+    height: 8%;
+    background-color: #fdeef4;
+    border-bottom: 1px  solid #800080;
+    display: block;
+}
+
+header nav{
+    display: inline;
+    width: auto;
+    float: left;
+}
+
+header ul, header li{
+    margin-right: -45;
+}
+
+header #title{
+    float: left;
+    width: auto;
+    height: 100%;
+    padding-top: 10px;
+}
+
+#navBarInterna{
+    padding-top: 10px;
+    padding-left: 40px;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    border: 2px solid #800080;
+    background-color: white;
+}
+.titolini{
+    font: 25px/10px TimesNewRoman, "Inconsolata", monospace;
+    color: #800080;
+}
+
+.sonoQui:link, .sonoQui:visited{
+    font: 30px/10px TimesNewRoman, "Inconsolata", monospace;
+    color: #8b008b;
+}
+
+.sonoQui:hover{
+    font-weight: bold;
+}
+
+#sideBar{
+    background-color: white;
+    margin-top: 51px;
+    margin-left: 0px;
+    padding-left: 5px;
+    float: left;
+    position: fixed;
+    width: 20%;
+    height: 100%;
+    border-right: 1px  solid #800080;
+    border-left: 1px  solid #800080;
+    clear: both;
+    
+}
+
+#content{
+    margin-top: 8%;
+    margin-left: 30%;
+    width: 60%;
+    float: left;
+    clear: both;
+    display: block;
+}
+
+#contentLogin{
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 100px;
+    padding-top: 20px;
+    width: 100%;
+    height: 100%;
+    clear: both;
+    display: block;
+    background-color: white;
+}
+
+#login{
+    padding-top: 40px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 30px;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 500px;
+    height: 200px;
+    border: 0.4px solid #8b008b;
+    border-radius: 15px;
+    box-shadow: 0 0 50px rgba(0,0,0,.2);
+    background-color: #fdeef4;
+}
+
+#login label{
+    font: 25px/30px "Inconsolata", monospace;
+    color: #8b008b;
+}
+
+#login input{
+    height: 30px;
+    width: 95%;
+    align-content: center;
+}
+
+#profContent{
+    margin-top: 65px;
+    margin-left: 280px;
+    padding-left: 50px;
+    padding-top: 20px;
+    width: 72%;
+    height: 80%;
+    float: left;
+    clear: both;
+    display: block;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0,0,0,.2);
+}
+#foto{
+    height:90%;
+    width:15%;
+    margin-top: 20px;
+    float: left;
+}
+
+#infoo{
+    width: 80%;
+    height:100%;
+    float: right;
+}
+
+#infoProfilo{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 8px;
+    margin-left: 10px;
+    width: 95%;
+    height: auto;
+}
+
+
+#infoProfilo label{
+    float: left;
+    width: 35%;
+    font: 14px/32px "Inconsolata", monospace;
+}
+
+#infoProfilo input{
+    float: right;
+    width:60%;
+    height: 25px;
+    padding-bottom: 5px;
+}
+
+#infoProfilo textarea{
+    float: right;
+    height: 40px;
+    width: 59.5%;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+#divBody{
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.post{
+    background-color: white;
+    height: auto;
+    width: 90%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,.2);
+    margin-bottom: 20px;
+}
+
+form button{
+    width: 98.5%;
+    height: 30px;
+    padding-top:10px;
+    padding-bottom: 10px;
+    padding-left: auto;
+    padding-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #8b008b;
+    border-radius: 12px;
+    font: 20px/5px "Consolas", monospace;
+    color: #8b008b;
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+    background-color: white;
+}
+
+#post{
+    float: left;
+    height: 600px;
+    width: 100%;
+}
+
+.picProfilo img{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.fotoProfilo{
+    width: 140px;
+    height: 140px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,.2);
+}
+
+a.conFoto:before{
+    content: url("immagini/picture.png");
+    padding-left: 2px;
+    padding-right: 2px;
+    font: 15px/10px "Inconsolata", monospace;
+} 
+
+#sideBar ul{
+    list-style-type: none;
+    font: 15px/20px "Inconsolata", monospace;
+    padding-left: 5px;
+}
+
+/* Le uniche immagini decorative nella bozza sono quelle di fianco al nome dei gruppi, ovvero la mongolfiera e l'orologio.
+   Le altre immagini non sono decorative ma informative, in quanto indicano ciò che vi è a fianco (l'omino indica che si tratta di una 
+   persona, sia a fianco al suo nome, sia al fianco di un post, che indica appunto che è stato pubblicato da un utente). Vedendo poi la 
+   grafetta è intuibile che a fianco vi sia/si deve inserire un allegato. 
+*/
+
+@media only screen and (max-width: 480px){
+    #sideBar {
+        display: none;
+    }
+    
+    #content {
+        margin-top: 30vh;
+        width: 100%;
+        float: left;
+        clear: both;
+        margin-left: 3%;
+    }
+    
+    nav ol, nav li, nav a, nav ul{
+        list-style-type:none;
+        display: block;
+        padding-left: 0;
+        font: 12px/18px TimesNewRoman, "Inconsolata", monospace;
+        margin: 0;
+    }
+    
+    nav li {
+        padding-bottom: 5px;
+    }
+    
+    header{
+        height: 27%;
+        background-color: #fdeef4;
+        text-align: center;
+    }
+    
+    .navLeft{
+        float: none;
+    }
+    
+    .navRight{
+        float: none;
+        margin-right: 0;
+    }
+    
+    header #title{
+        height: auto;
+        float: none;
+    }
+    
+    #profContent{
+        margin-top: 30vh;
+        margin-left: 8%;
+        margin-right: 5%;
+        padding-left: 3%;
+        padding-top: 5%;
+        width: 80%;
+        height: 80%;
+        float: none;
+        clear: both;
+        display: block;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 50px rgba(0,0,0,.2);
+    }
+    
+    #foto{
+        float: none;
+        width: 100%;
+        height: 18%;
+        margin-left: 30%;
+    }
+    
+    .fotoProfilo{
+        width: 90px;
+        height: 90px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
+    }
+    
+    #infoProfilo{
+        padding-bottom: 10%px;
+        padding-top: 10%;
+        padding-left: 0;
+        padding-right: 15%;
+        margin-left: -15%;
+        width: 95%;
+        height: auto;
+    }
+    
+    #infoProfilo label{
+        float: left;
+        width: 35%;
+        font: 12px/20px "Inconsolata", monospace;
+    }
+
+    #infoProfilo input{
+        float: right;
+        width:65%;
+        height: 20px;
+        width: 60%;
+        padding-bottom: 4px;
+    }
+    
+    #navLogin{
+        width: 100%;
+    }
+    
+    #contentLogin{
+        margin-top: 25vh;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0;
+        padding-top: 20px;
+        width: 100%;
+        height: 100%;
+        clear: both;
+        display: block;
+        background-color: white;
+    }
+    
+    #login{
+        padding-top: 40px;
+        padding-bottom: 20px;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 0;
+        width: 90%;
+        height: 200px;
+        border: 0.4px solid #8b008b;
+        border-radius: 15px;
+        box-shadow: 0 0 50px rgba(0,0,0,.2);
+        background-color: #fdeef4;
+    }
+    
+    #navBarInterna{
+        padding-top: 8px;
+        padding-left: 2%;
+        padding-right:2%;
+        margin-top: 34vh;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        border: 2px solid #800080;
+        background-color: white;
+    }
+
+}
+
+@media only screen and (min-width: 481px) and (max-width: 1023px){
+    #sideBar {
+        display: block;
+    }
+    
+    header{
+        top: 0;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 10px;
+        position: fixed;
+        width: 99.9%;
+        height: 8%;
+        background-color: #fdeef4;
+        border-bottom: 1px  solid #800080;
+        display: block;
+    }
+    
+    header li{
+       margin-right: -6%; 
+    }
+    
+    #sideBar a:link{
+        font-size: 15px;
+        text-decoration: none;
+        color: #8b008b;
+    }
+
+    #sideBar a:visited{
+        font-size: 15px;
+        text-decoration: none;
+        color: #cc0099;
+    }
+  
+    .navLeft{
+        float: left;
+        display: inline;
+        padding-left: 0%;
+        width: 52%;
+    }
+    
+    .navLeft ul{
+        padding-left: 0%;
+    }
+    
+    .navLeft li{
+        padding-right: -1%;
+    }
+    
+    header ul, header li {
+        padding-left: 0%;
+    }
+    
+    h1{
+        margin-top: 0px; 
+        margin-left: 2px;
+        color: #800080;
+        font: 30px/35px "Inconsolata", monospace;
+        font-weight: bold;
+    }
+    
+    header a:link{
+        font: 15px/15px "Inconsolata", monospace;
+    }
+    
+    .navRight{
+        float:right;
+        display: inline;
+        margin-right: 2px;
+        width: 8%;
+    }
+    
+    .sonoQui:link, .sonoQui:visited{
+        font: 22px/10px TimesNewRoman, "Inconsolata", monospace;
+        color: #8b008b;
+    }
+
+    .sonoQui:hover{
+        font-weight: bold;
+    }
+    
+    .post{
+        margin-top: 8vh;
+    }
+    
+    #foto{
+       float: none;
+       width: 90%;
+       height: auto;
+    }
+    
+    .fotoProfilo{
+        width: 90px;
+        height: 90px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
+    }
+    
+    #infoProfilo{
+        padding-bottom: 10%;
+        padding-top: 10%;
+        padding-left: 0;
+        padding-right: 15%;
+        margin-left: -15%;
+        width: 95%;
+        height: auto;
+        float: none;
+    }
+    
+    #infoProfilo label{
+        float: left;
+        width: 35%;
+        font: 12px/20px "Inconsolata", monospace;
+    }
+
+    #infoProfilo input{
+        float: right;
+        width:65%;
+        height: 20px;
+        width: 60%;
+        padding-bottom: 4px;
+    }
+    
+    #profContent{
+        margin-top: 10vh;
+        margin-left: 22%;
+        margin-right: 5%;
+        padding-left: 3%;
+        padding-top: 5%;
+        padding-bottom: 40px;
+        width: 70%;
+        height: 70%;
+        float: none;
+        clear: both;
+        display: block;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 50px rgba(0,0,0,.2);
+    }
+    
+    #sideBar{
+        background-color: white;
+        margin-top: 51px;
+        margin-left: 0px;
+        padding-left: 5px;
+        float: left;
+        position: fixed;
+        width: 20%;
+        height: 100%;
+        border-right: 1px  solid #800080;
+        border-left: 1px  solid #800080;
+        clear: both;
+
+    }
+    
+    .titolini{
+        font: 20px/10px TimesNewRoman, "Inconsolata", monospace;
+        color: #800080;
+    }
+    
+}
+
+@media only screen and (min-width: 1024px){
+    #sideBar {
+        display: block;
+    }
+}
+
+
