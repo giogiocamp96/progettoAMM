@@ -60,7 +60,14 @@ public class Bacheca extends HttpServlet {
 //   
 
         HttpSession session = request.getSession(false);
-
+        
+        if (request.getParameter("inviopost") != null) {
+            request.setAttribute("inviopost", true);
+            request.setAttribute("testopostnuovo", request.getParameter("testopost"));
+            request.setAttribute("immaginepostnuovo", request.getParameter("immaginepost"));
+            
+        }
+        
         List<Gruppo> listaGruppi = GruppiFactory.getInstance().getListaGruppi();
         request.setAttribute("listaGruppi", listaGruppi);
 
