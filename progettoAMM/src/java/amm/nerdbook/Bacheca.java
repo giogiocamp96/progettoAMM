@@ -35,29 +35,6 @@ public class Bacheca extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-//    
-//
-//        String user = request.getParameter("user");
-//        int userID;
-//
-//        if(user != null){
-//            userID = Integer.parseInt(user);
-//        } else {
-//            userID = 2; //Da sostituire con utente loggato
-//        }
-//        
-//        Utente utente = UtentiFactory.getInstance().getUtenteById(userID);
-//        if(utente != null){
-//            request.setAttribute("utente", utente);
-//
-//            List<Post> posts = PostFactory.getInstance().getPostList(utente);
-//            request.setAttribute("posts", posts);
-//            
-//            request.getRequestDispatcher("bacheca.jsp").forward(request, response);
-//        } else {
-//            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-//        }
-//   
 
         HttpSession session = request.getSession(false);
         
@@ -92,10 +69,7 @@ public class Bacheca extends HttpServlet {
             if (utente != null) {
                 request.setAttribute("utente", utente);
 
-                /**
-                 * metodo per visualizare i post di più utenti
-                 *
-                 */
+            
                 List<Utente> listaUtenti = UtentiFactory.getInstance().getListaUtenti(utente);
                 request.setAttribute("listaUtenti", listaUtenti);
 
@@ -187,3 +161,8 @@ public class Bacheca extends HttpServlet {
     }// </editor-fold>
 
 }
+
+
+
+
+

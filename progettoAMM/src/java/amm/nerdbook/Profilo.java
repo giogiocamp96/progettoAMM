@@ -38,7 +38,6 @@ public class Profilo extends HttpServlet {
         List<Gruppo> listaGruppi = GruppiFactory.getInstance().getListaGruppi();
         request.setAttribute("listaGruppi", listaGruppi);
 
-        //se la sessione esiste ed esiste anche l'attributo loggedIn impostato a true
         if (session != null && session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn").equals(true)) {
 
             String user = request.getParameter("user");

@@ -12,6 +12,7 @@
 
         <link rel="stylesheet" type="text/css" href="M3/style.css" media="screen">
     </head>
+    
     <body>
         <div id="page">
             <c:set var="title" value="Bacheca Personale" scope="request"/>
@@ -20,75 +21,71 @@
             <c:set var="title" value="Bacheca Personale" scope="request"/>
             <jsp:include page="sidebar.jsp"/>
 
-
-    <div id="content">
-
-
-        <div class="nuovopost">
-            <form class="newpost" name="newpost" action="Bacheca?inviopost=true" method="post">
-                <h2>${utente.nome} ${utente.cognome}</h2>
-                <div class="contentnewpost">
-                    <div class="newpost">
-                        <p> Scrivi qualcosa...</p>
-                        <div>
-                            <textarea class="newpost" name="testopost"></textarea>
+            <div id="content">
+                <div class="nuovopost">
+                    <form class="newpost" name="newpost" action="Bacheca?inviopost=true" method="post">
+                        <h2>${utente.nome} ${utente.cognome}</h2>
+                        <div class="contentnewpost">
+                            <div class="newpost">
+                                <p> Scrivi qualcosa...</p>
+                                <div>
+                                    <textarea class="newpost" name="testopost"></textarea>
+                                </div>
+                                <div>
+                                    <p>URL immagine:</p> 
+                                    <input class="newpost" type="text" name="immaginepost">
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <p>URL immagine:</p> 
-                            <input class="newpost" type="text" name="immaginepost">
+                        <div id="iniviopost">
+                            <button type="submit">Invio</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
-                <div id="iniviopost">
-                    <button type="submit">Invio</button>
-                </div>
-            </form>
-        </div>
 
-    <c:if test="${inviopost != null}">
-        <div class="formpost">
-            <form action="Bacheca" method="post">
-                <p>${testopostnuovo}</P>
-                <p>${immaginepostnuovo}</p>
+                <c:if test="${inviopost != null}">
+                    <div class="formpost">
+                        <form action="Bacheca" method="post">
+                            <p>${testopostnuovo}</P>
+                            <p>${immaginepostnuovo}</p>
             
-                <div id="iniviopost">
-                    <button type="submit">confermo</button>
-                </div>
-            </form>
-        </div>
-    </c:if>
+                            <div id="iniviopost">
+                                <button type="submit">confermo</button>
+                            </div>
+                        </form>
+                    </div>
+                </c:if>
 
-    <div id="post">
+                <div id="post">
+                    <c:if test="${inviopost == null}">
+                        <c:forEach var="post" items="${posts}">
+                            <div class="post">
+                                <c:if test="${not empty post.nomeUt}"><h2>${post.nomeUt}</h2></c:if>
+                                <c:if test="${not empty post.imageUt}">
+                                    <div class="picProfilo">
+                                        <img alt="utente pic" src ="${post.imageUt}" height="100" width="100">
+                                    </div>
+                                </c:if>
 
+                                <c:if test="${post.testo != null}">
+                                    <p>${post.testo}</p>
+                                </c:if>
 
-        <c:if test="${inviopost == null}">
-            <c:forEach var="post" items="${posts}">
-                <div class="post">
-                    <c:if test="${not empty post.nomeUt}"><h2>${post.nomeUt}</h2></c:if>
-                    <c:if test="${not empty post.imageUt}">
-                        <div class="picProfilo">
-                            <img alt="utente pic" src ="${post.imageUt}" height="100" width="100">
-                        </div>
+                                <c:if test="${post.urlImmagine != null}">
+                                    <img src="${post.urlImmagine}">
+                                </c:if>
+
+                                <c:if test="${post.link != null}">
+                                    <p><a href = ${post.link}>${post.link}</a></p>
+                                </c:if>
+                            </div>
+                        </c:forEach>                     
                     </c:if>
-
-
-                    <c:if test="${post.testo != null}">
-                        <p>${post.testo}</p>
-                    </c:if>
-
-                    <c:if test="${post.urlImmagine != null}">
-                        <img src="${post.urlImmagine}">
-                    </c:if>
-
-                    <c:if test="${post.link != null}">
-                        <p><a href = ${post.link}>${post.link}</a></p>
-                        </c:if>
-                </div>
-            </c:forEach>                     
-        </c:if>
-
                 </div>
             </div>
         </div>
     </body>
 </html>
+
+
+
