@@ -2,6 +2,11 @@ package amm.nerdbook.classi;
 
 import java.util.ArrayList;
 import amm.nerdbook.classi.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -10,7 +15,8 @@ import amm.nerdbook.classi.*;
 public class UtentiFactory {
 
     private static UtentiFactory singleton;
-
+    private String connectionString;
+    
     public static UtentiFactory getInstance() {
         if (singleton == null) {
             singleton = new UtentiFactory();
@@ -21,74 +27,74 @@ public class UtentiFactory {
     private ArrayList<Utente> listaUtenti = new ArrayList<Utente>();
 
     private UtentiFactory() {
-        //Creazione utenti
-
-        //Violet
-        Utente utente1 = new Utente();
-        utente1.setIdUtente(1);
-        utente1.setNome("Violet");
-        utente1.setCognome("Baudelaire");
-        utente1.setEmail("violet1999@gmail.com");
-        utente1.setPassword("tredicipiudiciotto");
-        utente1.setDataNascita("25/12/0000");
-        utente1.setFrasePresentazione("Adoro costruire marchingegni. Hihi.");
-        utente1.setUrlFoto("M2/immagini/violet.jpg");
-
-        //Sunny
-        Utente utente2 = new Utente();
-        utente2.setIdUtente(2);
-        utente2.setNome("Sunny");
-        utente2.setCognome("Baudelaire");
-        utente2.setEmail("sunnnypaxxerella@gmail.com");
-        utente2.setPassword("99scimmie");
-        utente2.setDataNascita("25/12/0000");
-        utente2.setFrasePresentazione("Levigare con i dentini: troppo figo.");
-        utente2.setUrlFoto("M2/immagini/sunny.jpg");
-
-        //Klaus
-        Utente utente3 = new Utente();
-        utente3.setIdUtente(3);
-        utente3.setNome("Klaus");
-        utente3.setCognome("Baudelaire");
-        utente3.setEmail("Klausssss23@gmail.com");
-        utente3.setPassword("ehiguys");
-        utente3.setDataNascita("25/12/0000");
-        utente3.setFrasePresentazione("Libri di giurisprudenza e cannocchiali sono il mio forte!");
-        utente3.setUrlFoto("M2/immagini/klaus.jpg");
-
-        //Klaus
-        Utente utente4 = new Utente();
-        utente4.setIdUtente(4);
-        utente4.setNome("Prova");
-        utente4.setCognome("Baudelaire");
-        utente4.setEmail("");
-        utente4.setPassword("1234");
-        utente4.setFrasePresentazione("Libri di giurisprudenza e cannocchiali sono il mio forte!");
-        utente4.setUrlFoto("M2/immagini/klaus.jpg");
-
-        listaUtenti.add(utente1);
-        listaUtenti.add(utente2);
-        listaUtenti.add(utente3);
-        listaUtenti.add(utente4);
-
+  
     }
 
     public Utente getUtenteById(int id) {
-        for (Utente utente : this.listaUtenti) {
-            if (utente.getIdUtente() == id) {
-                return utente;
-            }
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "giorgia", "gio");
+
+            String query = "select * from utente " 
+                            + "where id =?";
+
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, id);
+
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {
+                    Utente current = new Utente();
+                    current.setIdUtente(res.getInt("id"));
+                    current.setNome(res.getString("nome"));
+                    current.setCognome(res.getString("cognome"));
+                    current.setPassword(res.getString("password"));
+                    current.setEmail(res.getString("email"));
+                    current.setDataNascita(res.getString("dataNascita"));
+                    current.setFrasePresentazione(res.getString("frasePresentazione"));
+                    current.setUrlFoto(res.getString("urlFoto"));
+
+                    stmt.close();
+                    conn.close();
+                    return current;
+                }
+
+                stmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                 e.printStackTrace();
         }
         return null;
     }
 
-    //metodo da rivedere preso da gattender
    
     public int getIdByUserAndPassword(String user, String password) {
-        for (Utente utente : this.listaUtenti) {
-            if (utente.getNome().equals(user) && utente.getPassword().equals(password)) {
-                return utente.getIdUtente();
+         try {
+        
+            Connection conn = DriverManager.getConnection(connectionString, "giorgia", "gio");
+            
+            String query = 
+                      "select id from utente "
+                    + "where nome = ? and password = ?";
+            
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            stmt.setString(1, user);
+            stmt.setString(2, password);
+            
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {
+                int id = res.getInt("id");
+
+                stmt.close();
+                conn.close();
+                return id;
             }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return -1;
     }
@@ -110,13 +116,36 @@ public class UtentiFactory {
 
     
     public ArrayList<Utente> getListaUtenti(Utente utenteloggato) {
+        
         ArrayList<Utente> nuovalista = new ArrayList<Utente>();
-        for (Utente utente : this.listaUtenti) {
-            if (utente != null) {
-                if (!(utente.equals(utenteloggato))) {
-                    nuovalista.add(utente);
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "giorgia", "gio");
+
+            String query = "select * from utente " ;
+
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            ResultSet res = stmt.executeQuery();
+
+            while (res.next()) {
+                    Utente current = new Utente();
+                    current.setIdUtente(res.getInt("id"));
+                    current.setNome(res.getString("nome"));
+                    current.setCognome(res.getString("cognome"));
+                    current.setPassword(res.getString("password"));
+                    current.setEmail(res.getString("email"));
+                    current.setDataNascita(res.getString("dataNascita"));
+                    current.setFrasePresentazione(res.getString("frasePresentazione"));
+                    current.setUrlFoto(res.getString("urlFoto"));
+
+                    nuovalista.add(current);
                 }
-            }
+
+                stmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                 e.printStackTrace();
         }
         return nuovalista;
     }
@@ -127,5 +156,11 @@ public class UtentiFactory {
         return this.listaUtenti;
 
     }
-
+    
+    public void setConnectionString(String s){
+	this.connectionString = s;
+    }
+    public String getConnectionString(){
+            return this.connectionString;
+    }
 }

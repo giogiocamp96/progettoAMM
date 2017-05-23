@@ -1,0 +1,47 @@
+﻿Entità:
+
+-UTENTE
+	id (chiave primaria)
+	nome
+	cognome
+	dataNascita
+    	email 
+    	password 
+    	frasePresentazione
+        urlFoto
+        tipoUtente
+	
+-POST
+	id (chiave primaria)
+    	testo
+    	urlImmagine
+        urlAllegato
+    	link
+	utente (chiave esterna)
+	
+-GRUPPO
+	id (chiave primaria)
+   	nome
+    	urlFoto
+    	frase
+
+RELAZIONI:
+
+Relazione utente-post
+	-nome: pubblicazione
+	-cardinalità: 1 a molti (un utente può pubblicare uno o più post; uno o più post sono pubblicati da un solo utente)
+	-attributo: data pubblicazione
+	
+Relazione utente-gruppo
+	-id utente, id gruppo (chiave primaria)
+	-nome: appartenenza
+	-cardinalità: molti a molti (un utente è iscritto ad uno o più gruppi; un gruppo è popolato da uno o più utenti)
+	-attributo: data iscrizione
+	
+Relazione utente-utente:
+	-id ut1, id ut2 (chiave primaria)
+	-nome: amicizia
+	-cardinalità: molti a molti
+    
+
+ 

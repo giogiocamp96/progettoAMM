@@ -10,6 +10,7 @@ import amm.nerdbook.classi.PostFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,13 +39,6 @@ public class Bacheca extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         
-        if (request.getParameter("inviopost") != null) {
-            request.setAttribute("inviopost", true);
-            request.setAttribute("testopostnuovo", request.getParameter("testopost"));
-            request.setAttribute("immaginepostnuovo", request.getParameter("immaginepost"));
-            
-        }
-        
         List<Gruppo> listaGruppi = GruppiFactory.getInstance().getListaGruppi();
         request.setAttribute("listaGruppi", listaGruppi);
 
@@ -68,22 +62,26 @@ public class Bacheca extends HttpServlet {
             Utente utente = UtentiFactory.getInstance().getUtenteById(userID);
             if (utente != null) {
                 request.setAttribute("utente", utente);
+                
+            if (request.getParameter("inviopost") != null) {
+                this.newPost(utente, request, session, response);
+            }
 
             
                 List<Utente> listaUtenti = UtentiFactory.getInstance().getListaUtenti(utente);
                 request.setAttribute("listaUtenti", listaUtenti);
 
-                if (request.getParameter("postgruppivisualizati") != null) {
+                if (request.getParameter("postgruppivisualizzati") != null) {
 
                     String idGroup = request.getParameter("idGruppoSideBar");
                     int idGruppo = Integer.parseInt(idGroup);
                     List<Post> posts = PostFactory.getInstance().getPostListGruppi(idGruppo);
                     request.setAttribute("posts", posts);
-                    request.setAttribute("postgruppivisualizati", null);
+                    request.setAttribute("postgruppivisualizzati", null);
 
                 } else {
 
-                    if (request.getParameter("postvisualizati") != null) {
+                    if (request.getParameter("postvisualizzati") != null) {
 
                         if (request.getParameter("idUsers") != null) {
 
@@ -93,24 +91,23 @@ public class Bacheca extends HttpServlet {
 
                             List<Post> posts = PostFactory.getInstance().getPostListforId(idDaVisualizzare);
                             request.setAttribute("posts", posts);
-                            request.setAttribute("postvisualizati", null);
+                            request.setAttribute("postvisualizzati", null);
 
                         } else {
 
                             List<Post> posts = PostFactory.getInstance().getGlobalPostList();
                             request.setAttribute("posts", posts);
-                            request.setAttribute("postvisualizati", null);
+                            request.setAttribute("postvisualizzati", null);
                         }
 
                     } else {
 
                         List<Post> posts = PostFactory.getInstance().getPostList(utente);
+                        Collections.reverse(posts);
                         request.setAttribute("posts", posts);
                     }
                 }
-                /**
-                 * fine metodo
-                 */
+              
 
                 request.getRequestDispatcher("/M3/bacheca.jsp").forward(request, response);
             } else {
@@ -159,7 +156,34 @@ public class Bacheca extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    public void newPost(Utente utente, HttpServletRequest richiesta, HttpSession session, HttpServletResponse response)
+    throws ServletException, IOException {
+    
+        if(richiesta.getParameter("inviopost") != null) {
+            
+            String testo = richiesta.getParameter("testopost");
+            String immagine = richiesta.getParameter("immaginepost");
+            String link = richiesta.getParameter("linkpost");
+            
+            Post post = new Post();
+            
+            post.setTesto(testo);
+            post.setLink(link);
+            post.setUrlImmagine(immagine);
+            post.setUt(utente);
+            
+            if(testo != null || immagine != null || link != null){
+            
+                PostFactory.getInstance().addNewPost(post);
+                richiesta.removeAttribute("inviopost");
+                response.setIntHeader("Refresh", 0);
+            }
+            
 
+        }
+    }
+            
 }
 
 

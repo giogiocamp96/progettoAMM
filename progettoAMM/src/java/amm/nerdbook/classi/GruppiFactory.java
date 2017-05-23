@@ -13,7 +13,8 @@ import java.util.ArrayList;
  */
 public class GruppiFactory {
     
-        private static GruppiFactory singleton;
+    private static GruppiFactory singleton;
+    private String connectionString;
 
     public static GruppiFactory getInstance() {
         if (singleton == null) {
@@ -38,9 +39,7 @@ public class GruppiFactory {
         gruppo1.setNome("Sesi de Murera se...");
         gruppo1.setUrlFoto("M3/immagini");
         gruppo1.setFrase("");
-                 
-                    
-                    
+                        
                     
         Gruppo gruppo2 = new Gruppo();
         gruppo2.setIdGruppo(2);
@@ -67,6 +66,13 @@ public class GruppiFactory {
             }
         }
         return null;
+    }
+    
+    public void setConnectionString(String s){
+	this.connectionString = s;
+    }
+    public String getConnectionString(){
+            return this.connectionString;
     }
     
 }

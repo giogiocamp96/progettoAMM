@@ -111,9 +111,9 @@ public class Post {
     /**
      * @param imageUt the imageUt to set
      */
-    public void setImageUt(String imageUt) {
+   /* public void setImageUt(String imageUt) {
         this.imageUt = imageUt;
-    }
+    }*/
 
     /**
      * @return the nomeUt

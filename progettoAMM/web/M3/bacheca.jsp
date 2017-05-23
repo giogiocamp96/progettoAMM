@@ -33,8 +33,17 @@
                                 </div>
                                 <div>
                                     <p>URL immagine:</p> 
+                                </div>
+                                <div>
                                     <input class="newpost" type="text" name="immaginepost">
                                 </div>
+                                <div>
+                                    <p>URL link:</p> 
+                                </div>
+                                <div>
+                                    <input class="newpost" type="text" name="linkpost">
+                                </div>
+                                
                             </div>
                         </div>
                         <div id="iniviopost">
@@ -42,19 +51,6 @@
                         </div>
                     </form>
                 </div>
-
-                <c:if test="${inviopost != null}">
-                    <div class="formpost">
-                        <form action="Bacheca" method="post">
-                            <p>${testopostnuovo}</P>
-                            <p>${immaginepostnuovo}</p>
-            
-                            <div id="iniviopost">
-                                <button type="submit">confermo</button>
-                            </div>
-                        </form>
-                    </div>
-                </c:if>
 
                 <div id="post">
                     <c:if test="${inviopost == null}">

@@ -15,6 +15,7 @@ public class Utente {
     private String password;
     private String frasePresentazione;
     private String urlFoto;
+    private String tipo;
     
     public Utente(){
         
@@ -136,6 +137,17 @@ public class Utente {
      */
     public void setUrlFoto(String urlFoto) {
         this.urlFoto = urlFoto;
+    }
+    
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
     
     @Override

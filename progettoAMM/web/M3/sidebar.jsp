@@ -6,7 +6,7 @@
         <p class ="titolini">Persone</p>
         <ul>
             <c:forEach var="persona" items="${listaUtenti}">
-                <li><a href="bacheca.html?postvisualizati=true&idUsers=${persona.idUtente}" class="conFoto">${persona.nome} ${persona.cognome}</a></li>
+                <li><a href="bacheca.html?postvisualizzati=true&idUsers=${persona.idUtente}" class="conFoto">${persona.nome} ${persona.cognome}</a></li>
             </c:forEach>
         </ul>
     </div>
@@ -14,7 +14,7 @@
         <p class="titolini">Gruppi</p>
         <ul>
             <c:forEach var="gruppi" items="${listaGruppi}">                
-                <li><div class="botdiv"><a href="bacheca.html?postgruppivisualizati=true&idGruppoSideBar=${gruppi.idGruppo}">
+                <li><div class="botdiv"><a href="bacheca.html?postgruppivisualizzati=true&idGruppoSideBar=${gruppi.idGruppo}">
                             ${gruppi.nome}</a></div></li>                
             </c:forEach>
         </ul>

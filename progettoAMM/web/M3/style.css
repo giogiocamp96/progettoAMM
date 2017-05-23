@@ -293,20 +293,21 @@ header #title{
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(0,0,0,.2);
     margin-bottom: 20px;
+    align-content: center;
 }
 
 .nuovopost{
     background-color: white;
-    height: 330px;
-    width: 90%;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    height: 340px;
+    width: 85%;
+    padding-top: 8px;
+    padding-bottom: 8px;
     padding-left: 20px;
-    padding-left: 20px;
+    padding-right: 10px;
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(0,0,0,.2);
     margin-bottom: 20px;
-    font: 18px/25px "Inconsolata", monospace;
+    font: 16px/20px "Inconsolata", monospace;
     color: #8b008b;
 }
 .contentnewpost{
@@ -315,24 +316,24 @@ header #title{
 }
 
 .newpost{
-    width: 100%;
+    width: 90%;
     float: left;
 }
 
 .newpost textArea{
-    width: 98%;
-    height: 50px;
+    width: 100%;
+    height: 30px;
 }
 
 .newpost input{
     width: 100%;
-    height:30px;
-    margin-left: 5%;
-    margin-top: 10px;
+    height: 15px;
+    margin-top: 3px;
 }
 
 #iniviopost{
     display: block;
+    
 }
 
 .formpost{
@@ -396,6 +397,8 @@ a.conFoto:before{
     font: 15px/20px "Inconsolata", monospace;
     padding-left: 5px;
 }
+
+
 
 /* Le uniche immagini decorative nella bozza sono quelle di fianco al nome dei gruppi, ovvero la mongolfiera e l'orologio.
    Le altre immagini non sono decorative ma informative, in quanto indicano ciò che vi è a fianco (l'omino indica che si tratta di una 
