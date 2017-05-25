@@ -136,8 +136,8 @@ public class PostFactory {
         List<Post> listaPost = new ArrayList<Post>();
 
         for (Post post : this.listaPost) {
-            if (post.getGruppo() != null) {
-                if (post.getGruppo().getIdGruppo() == idGruppo) {
+            if (post.getBachecaGruppo() != -1) {
+                if (post.getBachecaGruppo() == idGruppo) {
                     listaPost.add(post);
                 }
             }
@@ -150,14 +150,17 @@ public class PostFactory {
         try{
             Connection conn = DriverManager.getConnection(connectionString, "giorgia", "gio");
         
-            String query = "insert into post (id, testo, urlImmagine, urlLink, idUtente) "
-                            + "values (default, ?, ?, ?, ?)";
+        
+            String query = "insert into post (id, testo, urlImmagine, urlLink, idUtente, bachecaUtente, bachecaGruppo) "
+                            + "values (default, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, nuovo.getTesto());
             stmt.setString(2, nuovo.getUrlImmagine());
             stmt.setString(3, nuovo.getLink());
             stmt.setInt(4, nuovo.getUt().getIdUtente());
+            stmt.setInt(5, nuovo.getBachecaUtente());
+            stmt.setInt(6, -1);
             
             stmt.executeUpdate();
             
@@ -167,6 +170,64 @@ public class PostFactory {
         }catch(SQLException e){
             e.printStackTrace();
         }
+    }
+    
+    public List getPostListBachecaUtente(Utente ut) {
+    
+        List<Post> postList = new ArrayList<Post>();
+        
+        try{
+        
+            Connection conn = DriverManager.getConnection(connectionString, "giorgia", "gio");
+            String query = "select* from post " + "where bachecaUtente = ?";
+            
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            stmt.setInt(1, ut.getIdUtente());
+            
+            ResultSet result = stmt.executeQuery();
+            
+            while(result.next()) {
+            
+                Post corrente = new Post();
+                corrente.setIdPost(result.getInt("id"));
+                corrente.setUt(UtentiFactory.getInstance().getUtenteById(result.getInt("idUtente")));
+                corrente.setLink(result.getString("urlLink"));
+                corrente.setUrlImmagine(result.getString("urlImmagine"));
+                corrente.setTesto(result.getString("testo"));
+                corrente.setBachecaUtente(result.getInt("bachecaUtente"));
+                
+                postList.add(corrente);
+            }
+            
+            stmt.close();
+            conn.close();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return postList;
+    }
+
+    
+    public void cancellaPost(Utente u){
+    
+            try{
+            
+                Connection conn = DriverManager.getConnection(connectionString, "giorgia", "gio");
+                String query = "delete from post " + "where idUtente = ?";
+                
+                PreparedStatement stmt = conn.prepareStatement(query);
+                
+                stmt.setInt(1, u.getIdUtente());
+                
+                stmt.executeUpdate();
+                stmt.close();
+                conn.close();
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
     }
   
 }

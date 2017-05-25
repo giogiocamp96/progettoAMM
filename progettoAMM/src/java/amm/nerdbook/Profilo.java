@@ -2,6 +2,7 @@ package amm.nerdbook;
 
 import amm.nerdbook.classi.GruppiFactory;
 import amm.nerdbook.classi.Gruppo;
+import amm.nerdbook.classi.PostFactory;
 
 import amm.nerdbook.classi.UtentiFactory;
 import amm.nerdbook.classi.Utente;
@@ -105,6 +106,18 @@ public class Profilo extends HttpServlet {
         Utente utente = UtentiFactory.getInstance().getUtenteById(userID);
         if (utente != null) {
 
+            if(request.getParameter("cancella" )!= null){
+                
+                PostFactory.getInstance().cancellaPost(utente);
+                UtentiFactory.getInstance().eliminaUtente(utente);
+                session.invalidate();
+                request.getRequestDispatcher("/M3/login.jsp").forward(request, response);
+            }
+            
+            
+            
+            
+            
             if (request.getParameter("flag") != null) {
 
                 this.dataProfile(session, request);

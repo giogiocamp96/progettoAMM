@@ -16,7 +16,8 @@ public class Post {
     private String link;
     private String imageUt;
     private String nomeUt;  
-    private Gruppo gruppo; 
+    private int bachecaUtente;
+    private int bachecaGruppo;
     
     public Post(){
         
@@ -25,7 +26,8 @@ public class Post {
         this.testo = "";
         this.urlImmagine = "";
         this.link = "";
-        this.gruppo=null;
+        this.bachecaUtente = -1;
+        this.bachecaGruppo = -1;
     }
     
     /**
@@ -129,18 +131,32 @@ public class Post {
         this.nomeUt = nomeUt;
     }
     
-        /**
-     * @return the gruppo
+   /**
+     * @return the bachecaUtente
      */
-    public Gruppo getGruppo() {
-        return gruppo;
+    public int getBachecaUtente() {
+        return bachecaUtente;
     }
 
     /**
-     * @param gruppo the gruppo to set
+     * @param bachecaUtente the bachecaUtente to set
      */
-    public void setGruppo(Gruppo gruppo) {
-        this.gruppo = gruppo;
+    public void setBachecaUtente(int bachecaUtente) {
+        this.bachecaUtente = bachecaUtente;
+    }
+
+    /**
+     * @return the bachecaGruppo
+     */
+    public int getBachecaGruppo() {
+        return bachecaGruppo;
+    }
+
+    /**
+     * @param bachecaGruppo the bachecaGruppo to set
+     */
+    public void setBachecaGruppo(int bachecaGruppo) {
+        this.bachecaGruppo = bachecaGruppo;
     }
 
 }

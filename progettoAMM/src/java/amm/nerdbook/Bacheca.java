@@ -84,12 +84,13 @@ public class Bacheca extends HttpServlet {
                     if (request.getParameter("postvisualizzati") != null) {
 
                         if (request.getParameter("idUsers") != null) {
-
+                                
                             String tmp = request.getParameter("idUsers");
-
+                            session.setAttribute("tmp", tmp);
                             int idDaVisualizzare = Integer.parseInt(tmp);
 
-                            List<Post> posts = PostFactory.getInstance().getPostListforId(idDaVisualizzare);
+                            List<Post> posts = PostFactory.getInstance().getPostListBachecaUtente(UtentiFactory.getInstance().getUtenteById(idDaVisualizzare));
+                            Collections.reverse(posts);
                             request.setAttribute("posts", posts);
                             request.setAttribute("postvisualizzati", null);
 
@@ -173,6 +174,12 @@ public class Bacheca extends HttpServlet {
             post.setUrlImmagine(immagine);
             post.setUt(utente);
             
+            if(session.getAttribute("tmp")!= null){
+                post.setBachecaUtente(Integer.parseInt((String)session.getAttribute("tmp")));
+            }
+            else{
+                post.setBachecaUtente(utente.getIdUtente());
+            }
             if(testo != null || immagine != null || link != null){
             
                 PostFactory.getInstance().addNewPost(post);

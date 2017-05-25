@@ -106,6 +106,9 @@
                             <div id="flag">I dati sono stati inseriti correttamente</div>
                         </c:if>
                     </form>
+                    <form id ="cancellaProfilo" action = "Profilo?cancella=true" method="post">
+                        <button type ="submit">Cancella utente</button>
+                    </form>
                 </div>
             </div>
         </div>
