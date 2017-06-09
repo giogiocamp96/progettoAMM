@@ -33,23 +33,20 @@ public class Filter extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        response.setContentType("text/html;charset=UTF-8");
         String command = request.getParameter("cmd");
-        if (command != null) {
-           
-            if (command.equals("search")) {
-                
-                List<Utente> lista = UtentiFactory.getInstance().ricerca(request.getParameter("cercaUtente"));
 
-                request.setAttribute("lista", lista);
+        List<Utente> lista = UtentiFactory.getInstance().ricerca(request.getParameter("cercaUtente"));
+        if (lista.size() > 0) {
 
-           
-                response.setContentType("application/json");
-                response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
-                response.setHeader("Cache-Control", "no-store, no-cache, " + "must-revalidate");
-                
-                request.getRequestDispatcher("M3/ricerca.jsp").forward(request, response);
-            }
+            request.setAttribute("lista", lista);
+
+            response.setContentType("application/json");
+            response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
+            response.setHeader("Cache-Control", "no-store, no-cache, " + "must-revalidate");
+
+            request.getRequestDispatcher("M3/ricerca.jsp").forward(request, response);
+        } else {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
     }
 
