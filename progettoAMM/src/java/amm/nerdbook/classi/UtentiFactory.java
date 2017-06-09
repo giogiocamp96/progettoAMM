@@ -201,4 +201,53 @@ public class UtentiFactory {
 
     }
 
+    public ArrayList<Utente> ricerca(String nome) {
+
+        ArrayList<Utente> lista= new ArrayList<>();
+
+        String query;
+        PreparedStatement stmt;
+        Connection connessione;
+        ResultSet res;
+        
+        try {
+
+            connessione = DriverManager.getConnection(connectionString, "giorgia", "gio");
+
+            query = "select * from utente where nome || ' ' || cognome like ? ";
+
+            stmt = connessione.prepareStatement(query);
+
+            stmt.setString(1, "%" + nome + "%");
+
+            res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                Utente current = new Utente();
+                current.setIdUtente(res.getInt("id"));
+                current.setNome(res.getString("nome"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setEmail(res.getString("email"));
+                current.setDataNascita(res.getString("dataNascita"));
+                current.setFrasePresentazione(res.getString("frasePresentazione"));
+                current.setUrlFoto(res.getString("urlFoto"));
+
+                lista.add(0, current);
+
+                
+
+            }
+
+            stmt.close();
+            connessione.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+
+    }
+
 }

@@ -10,6 +10,8 @@
         <meta name="keywords" content="profilo NerdBook">
 
         <link rel="stylesheet" type="text/css" href="M3/style.css" media="screen">
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/javascript.js"></script>
     </head>
     <body>
         <div id="page">
